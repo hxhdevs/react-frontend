@@ -1,30 +1,28 @@
-import { createBrowserRouter } from 'react-router-dom';
-import AuthLayout from "./layouts/AuthLayout"
+import { createBrowserRouter } from 'react-router-dom'
+import AdminLayout from './layouts/AdminLayout'
+import AuthLayout from './layouts/AuthLayout'
 import Layout from './layouts/Layout'
 import Inicio from './views/Inicio'
 import Login from './views/Login'
-import Registro from './views/Registro'
 import Ordenes from './views/Ordenes'
-import Productos from './views/Productos';
-import AdminLayout from './layouts/AdminLayout';
+import Productos from './views/Productos'
+import Registro from './views/Registro'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element:<Layout />,
-        // para podr hacer uso de inicio tienes que pasarlo con Outlet para que pueda utilizar el componente es como decirle que puede llamar su hijo
-        children:[
+        element: <Layout />, 
+        children: [
             {
-                index:true,
+                index: true,
                 element: <Inicio />
             }
         ]
-
     },
     {
         path: '/auth',
         element: <AuthLayout />,
-        children:[
+        children: [
             {
                 path: '/auth/login',
                 element: <Login />
@@ -37,19 +35,18 @@ const router = createBrowserRouter([
     },
     {
         path: '/admin',
-        element:<AdminLayout />,
+        element: <AdminLayout />,
         children: [
             {
-                index:true,
+                index: true,
                 element: <Ordenes />
             },
             {
                 path: '/admin/productos',
-                element: <Productos/>
+                element: <Productos />
             }
         ]
     }
-    
 ])
 
-export default  router
+export default router
